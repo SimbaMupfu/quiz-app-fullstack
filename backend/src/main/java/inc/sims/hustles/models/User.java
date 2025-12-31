@@ -1,14 +1,12 @@
 package inc.sims.hustles.models;
 
 import inc.sims.hustles.enums.UserRole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "users")
 public class User {
 
     @Id
@@ -17,5 +15,7 @@ public class User {
 
     private String name;
     private String email;
+    private String password;
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 }
