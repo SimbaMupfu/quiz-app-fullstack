@@ -19,9 +19,9 @@ public class UserServiceImpl implements UserService {
 
         if(optionalUser == null){
             User user = new User();
-            user.setName("Name");
+            user.setName("Admin");
             user.setEmail("admin@hustles.com");
-            user.setPassword("password");
+            user.setPassword("admin");
             user.setRole(UserRole.ADMIN);
             userRepository.save(user);
         }
@@ -29,5 +29,10 @@ public class UserServiceImpl implements UserService {
 
     public boolean hasUserWithEmail(String email){
         return userRepository.findFirstByEmail(email) != null;
+    }
+
+    public User createUser(User user){
+        user.setRole(UserRole.USER);
+        return userRepository.save(user);
     }
 }
