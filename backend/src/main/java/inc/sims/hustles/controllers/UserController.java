@@ -28,4 +28,14 @@ public class UserController {
             return new ResponseEntity<>(newUser, HttpStatus.CREATED);
         }
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user){
+        User dbUser = userService.login(user);
+        if(dbUser == null){
+            return new ResponseEntity<>("Wrong credentials", HttpStatus.NOT_ACCEPTABLE);
+        }else{
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        }
+    }
 }
