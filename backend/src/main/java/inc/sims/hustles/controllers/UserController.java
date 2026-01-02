@@ -35,7 +35,7 @@ public class UserController {
         if(dbUser == null){
             return new ResponseEntity<>("Wrong credentials", HttpStatus.NOT_ACCEPTABLE);
         }else{
-            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+            return new ResponseEntity<>(dbUser, HttpStatus.OK);
         }
     }
 }
